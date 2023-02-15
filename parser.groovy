@@ -181,19 +181,19 @@ System.out.println("Line " + rIdx.toString());
               f_MeterSerialNo = lf[6];                            //MeterSerialNumber
               f_DirectionIndicator = lf[7];                                   //   DirectionIndicator
               f_PreviousRegisterRead = Float.valueOf(lf[8]);         // PreviousREgisterRead
-         LocalDateTime f_PreviousRegisterReadDateTime = LocalDateTime.parse(lf[9],DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+         LocalDateTime f_PreviousRegisterReadDateTime = lf[9].trim().isEmpty() ? null : LocalDateTime.parse(lf[9].trim(),DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
               f_PreviousQualityMethod = lf[10];
               f_PreviousReasonCode = lf[11];
               f_PreviousReasonDescription = lf[12];
               f_CurrentRegisterRead = Float.valueOf(lf[13]);         // CurrentRegisterRead
-              LocalDateTime f_CurrentRegisterReadDateTime = LocalDateTime.parse(lf[14],DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));         
+              LocalDateTime f_CurrentRegisterReadDateTime = lf[14].trim().isEmpty() ? null : LocalDateTime.parse(lf[14].trim(),DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));         
               f_CurrentQualityMethod = lf[15];
               f_CurrentReasonCode = lf[16];
               f_CurrentReasonDescription = lf[17];
               f_Quantity = Float.valueOf(lf[18]);    // Quantity
               f_UOM = lf[19];    // UOM
-              LocalDate f_NextScheduledReadDate = LocalDate.parse(lf[20],DateTimeFormatter.BASIC_ISO_DATE);
-              LocalDateTime f_UpdateReadDateTime = LocalDateTime.parse(lf[21],DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+              LocalDate f_NextScheduledReadDate = lf[20].trim().isEmpty() ? null :  LocalDate.parse(lf[20].trim(),DateTimeFormatter.BASIC_ISO_DATE);
+              LocalDateTime f_UpdateReadDateTime = lf[21].trim().isEmpty() ? null : LocalDateTime.parse(lf[21].trim(),DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
          LocalDateTime f_MSATSLoadDateTime = lf[22].trim().isEmpty() ? null : LocalDateTime.parse(lf[22].trim(),DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
               newRecord = sdc.createRecord(record.sourceId + ':newRecordId');
