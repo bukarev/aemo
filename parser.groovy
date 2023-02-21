@@ -1,4 +1,3 @@
-// import com.google.common.io.ByteStreams;
 import java.util.Arrays;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,7 +7,6 @@ import java.time.Duration;
 
 byte[] bytes = new byte[10240];
 String[] rCodes = {};
-//DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DateTimeFormatter.BASIC_ISO_DATE);
 
 // Sample Groovy code
 records = sdc.records
@@ -16,8 +14,7 @@ for (record in records) {
 
   recList = new ArrayList();
 
-// RETURN  
-//  try {
+  try {
       
       f_Filename = record.attributes['filename'];
 System.out.println("File: " + f_Filename);      
@@ -264,7 +261,6 @@ System.out.println("Line " + rIdx.toString());
            }     // end of 550-block processing    
        }  // of 250-block processing
         
-//        rIdx = rIdx + 1;
           l = lines[rIdx];
           lf = l.split(',');
       } // end of contents processing   
@@ -272,12 +268,11 @@ System.out.println("Line " + rIdx.toString());
       for(rec in recList) {
           sdc.output.write(rec);
       }
-// RETURN
-/*  
+
     } catch (e) {
         // Write a record to the error pipeline
         sdc.log.error("File " + record.attributes['filename'] + " " + e.toString(), e)
         sdc.error.write(record, "File " + record.attributes['filename'] + " " + e.toString())
     }
-*/
+
 }
